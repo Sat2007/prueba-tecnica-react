@@ -12,8 +12,9 @@ Prueba técnica React — panel de estaciones con sus servicios, construido con 
 Clona el repositorio y entra a la carpeta del proyecto:
 
 ```bash
-git clone <url-del-repositorio>
-cd <nombre-de-la-carpeta>
+git clone https://github.com/Sat2007/prueba-tecnica-react.git
+cd prueba-tecnica-react
+
 ```
 
 Instala las dependencias:
