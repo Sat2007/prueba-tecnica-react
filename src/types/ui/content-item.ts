@@ -5,6 +5,7 @@ export interface ContentItem {
     name: string,
     stationId: string,
     statusLabel: ContentStatus,
+    statusId: string,
     updatedAt: string
 }
 

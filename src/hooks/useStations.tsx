@@ -7,7 +7,8 @@ export default function useStations() {
         data: stations,
         isLoading,
         isError,
-        error
+        error,
+        isFetching
     } = useQuery({
         queryKey: ["stations"],
         queryFn: () => getStations(),
@@ -19,6 +20,7 @@ export default function useStations() {
         stations,
         isLoading,
         isError,
-        error
+        error,
+        isFetching
     }
 }

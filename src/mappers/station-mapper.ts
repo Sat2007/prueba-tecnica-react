@@ -8,6 +8,7 @@ export function toContentItem(stationInfoList: StationInfo[]): ContentItem[] {
             id: stationInfo.station.id,
             name: stationInfo.station.name,
             stationId: stationInfo.station.stationId,
+            statusId: stationInfo.status.statusId,
             statusLabel: toContentStatus(stationInfo.status),
             updatedAt: stationInfo.updatedAt
         }

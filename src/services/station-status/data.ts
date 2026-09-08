@@ -5,7 +5,7 @@ export interface StationStatus {
     updatedAt: string
 }
 
-export const stationStatusData: StationStatus[] = [
+export let stationStatusData: StationStatus[] = [
     {
         id: 1,
         stationId: "001",
