@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
         element: <StationsPage />
     },
     {
-        path: "/stations/:id",
+        path: "/stations/:stationId",
         element: <StationDetailPage />
     },
     {

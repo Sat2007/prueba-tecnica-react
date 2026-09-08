@@ -1,12 +1,30 @@
 import type { Station } from "../../types/station";
-import { delay } from "../../util/delay";
+import type { Status } from "../../types/status";
+import { simulateNetwork } from "../../utils/simulate-network";
+import { getStationStatus } from "../station-status/route";
+import { statusData } from "../status/data";
 import { stations } from "./data";
 
-export const getStations = async (): Promise<Station[]> => {
-    const delayTime = Math.floor(Math.random() * 1500) + 500;
-    await delay(delayTime)
-    if (Math.random() < 0.1) {
-        throw new Error("An error ocurred when fetching stations")
-    }
-    return stations
+export interface StationInfo {
+    station: Station,
+    status: Status,
+    updatedAt: string
+}
+
+export const getStations = async (): Promise<StationInfo[]> => {
+    await simulateNetwork("An error occurred when fetching stations")
+    const statusList = await getStationStatus()
+    return stations.map((station) => {
+        const currentStationStatus = statusList.find((stationStatus) => stationStatus.stationId === station.stationId)
+        if (!currentStationStatus) {
+            throw new Error(`No status relation found for station ${station.stationId}`)
+        }
+
+        const status = statusData.find((status) => status.statusId === currentStationStatus.statusId)
+        if (!status) {
+            throw new Error(`Status not found for id ${currentStationStatus.statusId}`)
+        }
+
+        return { station, status, updatedAt: currentStationStatus.updatedAt }
+    })
 }

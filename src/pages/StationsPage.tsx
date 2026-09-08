@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import useStations from "../hooks/useStations"
 
 export default function StationsPage() {
@@ -21,7 +22,8 @@ export default function StationsPage() {
                         stations.map(station => (
                             <li key={station.id} className="border p-3 rounded">
                                 <h3 className="font-semibold">{station.name}</h3>
-                                <p>{station.stationId}</p>
+                                <p>{station.statusLabel}</p>
+                                <Link to={`stations/${station.stationId}`}>Ver detalle</Link>
                             </li>
                         ))
                     }

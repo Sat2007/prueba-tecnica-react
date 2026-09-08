@@ -1,10 +1,10 @@
-type Status = "draft" | "published"
+export type ContentStatus = "draft" | "published"
 
 export interface ContentItem {
     id: number,
     name: string,
     stationId: string,
-    status: Status,
+    statusLabel: ContentStatus,
     updatedAt: string
 }
 

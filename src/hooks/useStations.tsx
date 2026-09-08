@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import type { Station } from "../types/station";
 import { getStations } from "../services/station/route";
+import { toContentItem } from "../mappers/station-mapper";
 
 export default function useStations() {
     const {
@@ -8,10 +8,12 @@ export default function useStations() {
         isLoading,
         isError,
         error
-    } = useQuery<Station[]>({
+    } = useQuery({
         queryKey: ["stations"],
-        queryFn: () => getStations()
+        queryFn: () => getStations(),
+        select: toContentItem
     })
+
 
     return {
         stations,
